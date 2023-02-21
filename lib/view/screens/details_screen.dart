@@ -189,54 +189,65 @@ class DetailsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                InkWell(
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: 2.3.h,
-                    backgroundColor: Colors.green.withOpacity(0.3),
-                    child: Icon(
-                      Icons.call_outlined,
-                      color: Colors.green,
-                      size: 3.h,
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      radius: 2.3.h,
+                      backgroundColor: Colors.green.withOpacity(0.3),
+                      child: Icon(
+                        Icons.call_outlined,
+                        color: Colors.green,
+                        size: 3.h,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      radius: 2.3.h,
+                      backgroundColor: Colors.blueAccent.withOpacity(0.3),
+                      child: Icon(
+                        Icons.chat_bubble_outline,
+                        color: Colors.blue,
+                        size: 3.h,
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(width: 1.w),
-                InkWell(
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: 2.3.h,
-                    backgroundColor: Colors.blueAccent.withOpacity(0.3),
-                    child: Icon(
-                      Icons.chat_bubble_outline,
-                      color: Colors.blue,
+                Expanded(
+                  flex: 3,
+                  child: CustomButtonCheck(
+                    icon: Icon(
+                      Icons.location_on_outlined,
+                      color: AppColor.kWhiteColor,
                       size: 3.h,
                     ),
-                  ),
-                ),
-                SizedBox(width: 1.w),
-                CustomButtonCheck(
-                  icon: Icon(
-                    Icons.location_on_outlined,
-                    color: AppColor.kWhiteColor,
-                    size: 3.h,
-                  ),
-                  title: "Car Location",
-                  color: AppColor.kMainColor,
-                  textColor: AppColor.kWhiteColor,
-                  press: () {},
-                ),
-                SizedBox(width: 1.5.w),
-                CustomButtonCheck(
-                  icon: Icon(
-                    Icons.bookmark_add_outlined,
+                    title: "Car Location",
                     color: AppColor.kMainColor,
-                    size: 3.h,
+                    textColor: AppColor.kWhiteColor,
+                    press: () {},
                   ),
-                  title: "Car Location",
-                  color: AppColor.kWhiteColor,
-                  textColor: AppColor.kMainColor,
-                  press: () {},
+                ),
+                SizedBox(width: 1.w),
+                Expanded(
+                  flex: 3,
+                  child: CustomButtonCheck(
+                    icon: Icon(
+                      Icons.bookmark_add_outlined,
+                      color: AppColor.kMainColor,
+                      size: 3.h,
+                    ),
+                    title: "Car Location",
+                    color: AppColor.kWhiteColor,
+                    textColor: AppColor.kMainColor,
+                    press: () {},
+                  ),
                 ),
               ],
             ),
