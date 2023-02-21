@@ -26,178 +26,223 @@ class DetailsScreen extends StatelessWidget {
         children: [
           CustomScrollView(
             slivers: [
-              SliverAppBar(
-                backgroundColor: AppColor.kMainColor,
-                toolbarHeight: 6.h,
-                expandedHeight: 40.h,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.network(
-                    productModel.image,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
-                ),
-                leading: CustomIconButton(
-                  iconColor: AppColor.kWhiteColor,
-                  icon: Icons.arrow_back,
-                  press: () {
-                    Get.back();
-                  },
-                ),
-                actions: [
-                  CustomIconButton(
-                      iconColor: AppColor.kWhiteColor,
-                      press: () {},
-                      icon: Icons.favorite_border_outlined),
-                  CustomIconButton(
-                    iconColor: AppColor.kWhiteColor,
-                    press: () {},
-                    icon: Icons.share,
-                  ),
-                ],
-                bottom: bottomSliver(),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 5.w),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 4.w, vertical: 2.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomText(
-                              text: "${productModel.type} in good condition",
-                              color: AppColor.kMainColor,
-                              fontSize: 14,
-                            ),
-                            const CustomText(
-                              text: "8,700 k.M",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ],
-                        ),
-                      ),
-                      checkItem(),
-                      SizedBox(height: 2.h),
-                      Column(
-                        children: [
-                          itemCarDetails(
-                              title: "Exterior Color",
-                              value:
-                                  productModel.detailsCarModel.outSide_color),
-                          itemCarDetails(
-                              title: "Interior Color",
-                              value:
-                                  productModel.detailsCarModel.iutSide_color),
-                          itemCarDetails(
-                              title: "Seat Type",
-                              value: productModel.detailsCarModel.type_disk),
-                          itemCarDetails(
-                              title: "Sunroof",
-                              value: productModel.detailsCarModel.sunroof
-                                  .toString()),
-                          itemCarDetails(
-                              title: "Rear Camera",
-                              value: productModel.detailsCarModel.camera
-                                  .toString()),
-                          itemCarDetails(
-                              title: "Sensor",
-                              value: productModel.detailsCarModel.sensor),
-                          itemCarDetails(
-                              title: "Cylinder",
-                              value: productModel.detailsCarModel.cylinder
-                                  .toString()),
-                          itemCarDetails(
-                              title: "Motion vector",
-                              value:
-                                  productModel.detailsCarModel.motion_vector),
-                        ],
-                      ),
-                      SizedBox(height: 2.h),
-                      const CustomText(text: Constants.text),
-                      SizedBox(height: 2.h),
-                      itemProfile(),
-                      SizedBox(height: 2.h),
-                      SizedBox(
-                        height: 18.h,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => CustomItemProduct(
-                              e: productModel.moreProduct[index], height: 18),
-                          separatorBuilder: (context, index) =>
-                              SizedBox(width: 1.w),
-                          itemCount: productModel.moreProduct.length,
-                        ),
-                      ),
-                      SizedBox(height: 5.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: CircleAvatar(
-                              radius: 2.3.h,
-                              backgroundColor: Colors.green.withOpacity(0.3),
-                              child: Icon(
-                                Icons.call_outlined,
-                                color: Colors.green,
-                                size: 3.h,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 1.w),
-                          InkWell(
-                            onTap: () {},
-                            child: CircleAvatar(
-                              radius: 2.3.h,
-                              backgroundColor:
-                                  Colors.blueAccent.withOpacity(0.3),
-                              child: Icon(
-                                Icons.chat_bubble_outline,
-                                color: Colors.blue,
-                                size: 3.h,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 1.w),
-                          CustomButtonCheck(
-                            icon: Icon(
-                              Icons.location_on_outlined,
-                              color: AppColor.kWhiteColor,
-                              size: 3.h,
-                            ),
-                            title: "Car Location",
-                            color: AppColor.kMainColor,
-                            textColor: AppColor.kWhiteColor,
-                            press: () {},
-                          ),
-                          SizedBox(width: 1.5.w),
-                          CustomButtonCheck(
-                            icon: Icon(
-                              Icons.bookmark_add_outlined,
-                              color: AppColor.kMainColor,
-                              size: 3.h,
-                            ),
-                            title: "Car Location",
-                            color: AppColor.kWhiteColor,
-                            textColor: AppColor.kMainColor,
-                            press: () {},
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 2.h),
-                    ],
-                  ),
-                ),
-              ),
+              sliverAppBar(),
+              bodySliverAppBar(),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  SliverAppBar sliverAppBar() {
+    return SliverAppBar(
+      backgroundColor: AppColor.kMainColor,
+      toolbarHeight: 6.h,
+      expandedHeight: 40.h,
+      pinned: true,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Image.network(
+          productModel.image,
+          fit: BoxFit.cover,
+          width: double.infinity,
+        ),
+      ),
+      leading: CustomIconButton(
+        iconColor: AppColor.kWhiteColor,
+        icon: Icons.arrow_back,
+        press: () {
+          Get.back();
+        },
+      ),
+      actions: [
+        CustomIconButton(
+            iconColor: AppColor.kWhiteColor,
+            press: () {},
+            icon: Icons.favorite_border_outlined),
+        CustomIconButton(
+          iconColor: AppColor.kWhiteColor,
+          press: () {},
+          icon: Icons.share,
+        ),
+      ],
+      bottom: bottomSliver(),
+    );
+  }
+
+  SliverToBoxAdapter bodySliverAppBar() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 5.w),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+              child: Row(
+                children: [
+                  CustomText(
+                    text: "${productModel.type} in good condition",
+                    color: AppColor.kMainColor,
+                    fontSize: 14,
+                  ),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      const CustomText(
+                        text: "8,700",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                      CustomText(
+                        text: " k.m",
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.kMainColor,
+                        fontSize: 12,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            checkItem(),
+            SizedBox(height: 2.h),
+            Column(
+              children: [
+                itemCarDetails(
+                  title: "Exterior Color",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.outSide_color,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+                itemCarDetails(
+                  title: "Interior Color",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.iutSide_color,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+                itemCarDetails(
+                  title: "Seat Type",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.type_disk,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+                itemCarDetails(
+                  title: "Sunroof",
+                  value: productModel.detailsCarModel.sunroof
+                      ? const Icon(Icons.done)
+                      : const Icon(Icons.clear),
+                ),
+                itemCarDetails(
+                  title: "Rear Camera",
+                  value: productModel.detailsCarModel.camera
+                      ? const Icon(Icons.done)
+                      : const Icon(Icons.clear),
+                ),
+                itemCarDetails(
+                  title: "Sensor",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.sensor,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+                itemCarDetails(
+                  title: "Cylinder",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.cylinder.toString(),
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+                itemCarDetails(
+                  title: "Motion vector",
+                  value: CustomText(
+                    text: productModel.detailsCarModel.motion_vector,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.kMainColor,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 2.h),
+            const CustomText(text: Constants.text),
+            SizedBox(height: 2.h),
+            itemProfile(),
+            SizedBox(height: 2.h),
+            SizedBox(
+              height: 18.h,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => CustomItemProduct(
+                    e: productModel.moreProduct[index], height: 18),
+                separatorBuilder: (context, index) => SizedBox(width: 1.w),
+                itemCount: productModel.moreProduct.length,
+              ),
+            ),
+            SizedBox(height: 5.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 2.3.h,
+                    backgroundColor: Colors.green.withOpacity(0.3),
+                    child: Icon(
+                      Icons.call_outlined,
+                      color: Colors.green,
+                      size: 3.h,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 1.w),
+                InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 2.3.h,
+                    backgroundColor: Colors.blueAccent.withOpacity(0.3),
+                    child: Icon(
+                      Icons.chat_bubble_outline,
+                      color: Colors.blue,
+                      size: 3.h,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 1.w),
+                CustomButtonCheck(
+                  icon: Icon(
+                    Icons.location_on_outlined,
+                    color: AppColor.kWhiteColor,
+                    size: 3.h,
+                  ),
+                  title: "Car Location",
+                  color: AppColor.kMainColor,
+                  textColor: AppColor.kWhiteColor,
+                  press: () {},
+                ),
+                SizedBox(width: 1.5.w),
+                CustomButtonCheck(
+                  icon: Icon(
+                    Icons.bookmark_add_outlined,
+                    color: AppColor.kMainColor,
+                    size: 3.h,
+                  ),
+                  title: "Car Location",
+                  color: AppColor.kWhiteColor,
+                  textColor: AppColor.kMainColor,
+                  press: () {},
+                ),
+              ],
+            ),
+            SizedBox(height: 2.h),
+          ],
+        ),
       ),
     );
   }
@@ -240,7 +285,7 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Container itemCarDetails({required String title, required String value}) {
+  Container itemCarDetails({required String title, required Widget value}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 3.w, vertical: 0.2.w),
       padding: EdgeInsets.symmetric(horizontal: 3.w),
@@ -267,11 +312,7 @@ class DetailsScreen extends StatelessWidget {
             flex: 1,
             child: Container(
               alignment: Alignment.center,
-              child: CustomText(
-                text: value,
-                fontWeight: FontWeight.bold,
-                color: AppColor.kMainColor,
-              ),
+              child: value,
             ),
           ),
         ],
@@ -343,8 +384,8 @@ class DetailsScreen extends StatelessWidget {
       borderRadius: BorderRadius.circular(1.5.h),
       elevation: 15,
       child: Container(
-        width: 8.h,
-        height: 8.h,
+        width: 9.h,
+        height: 9.h,
         padding: EdgeInsets.symmetric(vertical: 0.5.h, horizontal: 1.2.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(1.5.h),

@@ -35,7 +35,7 @@ class CustomItemProduct extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           width: 45.w,
-          color: Colors.grey.withOpacity(0.8),
+          color: Colors.grey.withOpacity(0.5),
           height: 2.5.h,
           child: CustomText(
             text: "${e.title} | ${e.type} | ${e.clas}",
