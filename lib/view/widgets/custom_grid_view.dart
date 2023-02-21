@@ -1,4 +1,4 @@
-import 'package:dreamsoft/view/screens/details_screen.dart';
+import 'package:dreamsoft/view/screens/detailsScreen/details_screen.dart';
 import 'package:dreamsoft/view/widgets/custom_item_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
